@@ -36,14 +36,23 @@ def plot(coord):
 
 
     
+# class Square:
+#     def __init__(self,x,y,w,h):
+#         self.x = x
+#         self.y = y
+#         self.w = w
+#         self.h = h
+#     def getpoints(self):
+#         return([])
+#     b = [[0 + x],[10 + y]]
+#     d = [[0] + x,[0 + y]]
+#     e = [[10 + x],[0 + y]]
+#     c = [[10 + x],[10 + y]]
 
 
-a = [[0,-1], [1,0]] #90degree rotation
 
-b = [[3],[17]]
-d = [[3],[7]]
-e = [[13],[7]]
-c = [[13],[17]]
+# sq1 = Square(3,7,7,3)
+
 center = [[0],[0]]
 
 tendeg = [[0.984808, -0.173648], [0.173648, 0.984808]]
@@ -52,23 +61,23 @@ twodeg = [[0.999391, -0.0348995], [0.0348995, 0.999391]]
 def rotate(starts,loops):
     global screen
     screen = []
-    for i in range(60):
+    for i in range(50):
         z = []
-        for j in range(60):
+        for j in range(50):
             z.append(bg)
         screen.append(z)
-    if loops > 250:
+    if loops > 800:
         return
     
     newstarts = []
     for i in starts:
-        #deplot(i)
         plot(matmul(twodeg,i))
         newstarts.append(matmul(twodeg,i))
     for i in range(len(starts)-1):
         
-        for index in range(15):
-            multa = index/15
+        
+        for index in range(20):
+            multa = index/20
             multb = 1-multa
             p1x = matmul(twodeg,starts[i])[0][0]
             p1y = matmul(twodeg,starts[i])[1][0]
@@ -83,7 +92,17 @@ def rotate(starts,loops):
         print(" ".join(i))
     time.sleep(0.02)
     rotate(newstarts,loops+1)
-rotate([b,center,c,center,e,center,d,center,b,c,e,d,b],0)
+
+a = [[-8],[-8]]
+b = [[-8],[8]]
+c = [[8],[8]]
+d = [[8],[-8]]
+e = [[6],[10]]
+f = [[6],[16]]
+g = [[16],[16]]
+h = [[16],[10]]
+
+rotate([e,center,f,center,g,center,h,center,e,f,g,h],e,0)
 
 
 
